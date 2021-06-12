@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Kazakhi Tour</title>
+    <link rel="stylesheet" href="/style/index.css">
+    <link rel="shortcut icon" href="/images/icon.png">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="/style/materialize/css/materialize.min.css" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"/>
+
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous"/>
+
+</head>
+<body>
+<header>
+        <nav class="navigator1">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="/main" class="brand-logo"><img src="/images/icon.png" alt=""><span class="logo">  Kazakhi Tour</span></a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul id="nav-mobile" class="hide-on-med-and-down words">
+                        <li><a href="/main">Home</a></li>
+                        <li><a href="/tours">Tours</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="hide-on-med-and-down ">
+                        <li th:if="${usr==null}"style="margin-left: 18%;"><a class="waves-effect waves-light btn-small btnnav modal-trigger" href="/registration" style="color: white !important;">Sign Up</a></li>
+                        <li th:if="${usr==null}"><a class="waves-effect waves-light btn-small btnnava modal-trigger" href="/login" style="background: white !important; color: #284B63 !important;">Login</a></li>
+                        <li th:if="${usr!=null}"><a class='dropdown-trigger' data-target='dropdown1' th:text="${usr.getUsername()}"></a></li>
+                        <ul id='dropdown1' class='dropdown-content' th:if="${usr!=null}">
+                            <li><a th:href="${usr.getUsername().equals('admin')}?@{/newTour}:@{'/user/'+${usr.getUsername()}}">Settings</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><form action="/logout" method="post">
+                                <button class="btn"  style="background: #284B63;" type="submit">Logout</button>
+                            </form></li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="/main">Home</a></li>
+            <li><a href="/tours">Tours</a></li>
+            <li th:if="${usr==null}"><a class="waves-effect waves-light btn-small btnnav modal-trigger" href="/registration">Sign Up</a></li>
+            <li th:if="${usr==null}"><a class="waves-effect waves-light btn-small btnnava modal-trigger" href="/login">Login</a></li>
+            <li th:if="${usr!=null}"><a th:href="${usr.getUsername().equals('admin')}?@{/newTour}:@{'/user/'+${usr.getUsername()}}">Settings</a></li>
+            <li th:if="${usr!=null}"><form action="/logout" method="post">
+                <button class="btn"  style="background: #284B63;" type="submit">Logout</button>
+            </form></li>
+        </ul>
+</header>
+<main>
+
+
+<div class="parallax-container">
+    <div class="parallax"><img th:src="${tours.getImage()}" style="width: 100%; height: 500px !important;"></div>
+</div>
+
+
+
+    <div class="section white">
+        <div class="row" style="margin: 2%;">
+                <nav style="background-color: transparent !important; box-shadow: none; font-weight: 400; font-size: 1.2rem; color: #284B63 !important;">
+                    <div class="nav-wrapper">
+                        <div class="col s12">
+                            <a href="/main" class="breadcrumb" style="font-size: larger; ">Home</a>
+                            <a href="/tours" class="breadcrumb" style="font-size:larger; ">Tours</a>
+                            <a href="#!" class="breadcrumb" style="font-size:larger; color: #284B63 !important;" th:text="${tours.getTourname()}"></a>
+                        </div>
+                    </div>
+                </nav>
+        </div>
+
+
+        <div class="row" style="margin: 2%;">
+            <div class="col s6 form1" style="background-color: #284B63;">
+                <form th:action="@{'/booktour/'+${tours.getTourid() }}" method="POST" style="padding: 2%;">
+                    <div class="container">
+                        <div class="input-field col s8" name="tourdate">
+                            <h6 class="white-text">Choose date:</h6>
+                            <select name="tourdate">
+                                <option value="" disabled selected>Date</option>
+                                <option th:each="i:${tours.getTourdate()}"  th:value="${i}" th:text="${i}"></option>
+                            </select>
+                        </div>
+                        <div class="input-field col s8">
+                            <h6 class="white-text">How many people:</h6>
+                            <input placeholder="Amount of people" type="number" name="numpeople" required class="validate">
+                        </div>
+                        <div class="input-field col s12">
+                            <input type="submit" name="submit" class="center btn regbtn white-text" value="book" style="background-color: #FDB784; width: 40%;">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="col s6 info" style="padding-left: 5%;">
+                <center>
+                    <h4 style="color: #FDB784;" th:text="${tours.getTourname()}">
+                    </h4>
+                    <h5 style="color: #FDB784">
+                        What will you get from that tour?
+                    </h5>
+                    <h6 style="color: #284B63;" th:text="${tourdet.getDescription()}">
+                    </h6>
+                </center>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+<div class="rd">
+    <div class="row" style="margin: 1.2%;">
+        <div class="col s4">
+            <center>
+                <i class="fas fa-star fa-5x white-text"></i>
+                <h5 style="color: #FDB784;">Safe journey</h5>
+                <p class="white-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </center>
+        </div>
+        <div class="col s4">
+            <center>
+                <i class="far fa-grin-beam fa-5x white-text"></i>
+                <h5 style="color: #FDB784;">Unforgettable emotions</h5>
+                <p class="white-text">
+                    Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </center>
+        </div>
+        <div class="col s4">
+            <center>
+                <i class="fas fa-camera-retro fa-5x white-text"></i>
+                <h5 style="color: #FDB784;">Beautiful pictures</h5>
+                <p class="white-text">
+                    Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </center>
+        </div>
+    </div>
+</div>
+
+<div id="contacts">
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text" style="font-family: Roboto; font-style: normal; font-weight: normal;">KAZAKHI TOUR</h5>
+                    <p class="grey-text text-lighten-4" style="font-family: Roboto; font-style: italic; font-weight: 300;">Write to discover this great country!</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text" style="font-family: Roboto; font-style: normal; font-weight: normal;">Contacts</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3 cl" href="#!"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a class="grey-text text-lighten-3 cl" href="#!"><i class="fab fa-vk"></i> VK</a></li>
+                        <li><a class="grey-text text-lighten-3 cl" href="#!"><i class="fab fa-telegram"></i> Telegram</a></li>
+                        <li><a class="grey-text text-lighten-3 cl" href="#!"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2021 Copyright Text
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+
+<script type="text/javascript" src="/style/materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="/js/tours.js"></script>
+
+</body>
+</html>

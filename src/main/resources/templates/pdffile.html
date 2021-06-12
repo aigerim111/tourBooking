@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="center">
+    <img src="/images/icon.png" alt=""></img>
+    <h3 style="text-align: center; color: #082A41">CONFIRMATION PAGE</h3>
+    <h3 style="text-align: center; color: #082A41">Dear</h3>
+    <h3 style="text-align: center; color: #082A41" th:text="${usr.firstName}"></h3>
+    <h3 style="text-align: center; color: #082A41" th:text="${usr.secondName}"></h3>
+    <h3 style="text-align: center; color: #082A41" th:text="${usr.phone}"></h3>
+    <h3 style="text-align: center; color: #082A41" th:text="${tour.getTours().get(0).tourname}"></h3>
+    <h3 style="text-align: center; color: #082A41" th:text="${tour.selTourDate}"></h3>
+    <h3 style="text-align: center; color: #082A41" >Congratulations with payment!!!</h3>
+</div>
+</body>
+</html>

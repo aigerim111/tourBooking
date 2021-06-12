@@ -1,0 +1,227 @@
+body{
+    font-family: Roboto !important;
+}
+.st{
+    background: linear-gradient(159.78deg, rgba(47, 89, 118, 0.82) 13.46%, #082A41 45.52%) !important;
+}
+.brand-logo {
+    margin-left: 5%;
+    display: flex !important;
+}
+.navbtns{
+    margin-left: 80%;
+}
+
+.sidenav{
+    background: linear-gradient(159.78deg, rgba(47, 89, 118, 0.82) 13.46%, #082A41 45.52%) !important;
+}
+
+.logo{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #FDB784;
+}
+.navigator{
+    background-color: transparent !important;
+    box-shadow: none;
+    padding-top: 20px;
+}
+.navv{
+    z-index : 100 !important;
+    position: relative !important;
+}
+.btnnav{
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: 1px solid #FFFFFF !important;
+    font-family: Roboto !important;
+    font-style: normal !important;
+    font-weight: 300 !important;
+    font-size: 1.2rem !important;
+    letter-spacing: 0.02em !important;
+    text-transform: capitalize !important;
+    color: white !important;
+}
+.btnnava{
+    background: white !important;
+    box-shadow: none !important;
+    font-family: Roboto !important;
+    font-style: normal !important;
+    font-weight: 300 !important;
+    font-size: 1.2rem !important;
+    letter-spacing: 0.07em !important;
+    text-transform: capitalize !important;
+    color: #284B63 !important;
+}
+
+.imgbox .col{
+    padding: 0 !important;
+}
+.imgbox{
+    padding-top: 6% !important;
+    padding-bottom: 3% !important;
+}
+.imgs{
+    width: 100% !important;
+    height: 26rem !important;
+}
+.imgs:hover{
+    transform: scale(1.1);
+    transition: all .4s ease-in-out 0.2s;
+}
+.nd{
+    margin: 4%;
+    padding-bottom: 55px;
+}
+.nd p{
+    font-size: 1.3rem;
+}
+
+.rd{
+    background: rgb(68,65,65);
+    background: linear-gradient(90deg, rgba(68,65,65,0.9363095580028886) 41%, rgba(53,53,53,1) 93%);
+    padding: 2% 5%;
+}
+
+.rd nav{
+    background-color: transparent !important;
+    box-shadow: none;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: #FFFFFF;
+}
+
+.types li{
+    padding: 0 !important;
+    background-color: white;
+    color:#284B63;
+    letter-spacing: 0.03em;
+    font-size: 1.1rem;
+}
+
+.types li:hover {
+    background-color: #284B63;
+    color:white;
+}
+
+.types li a{
+    margin: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.row.cards img{
+    width: 100% !important;
+    height: 22rem !important;
+}
+
+.row.cards{
+    color: #FDB784;
+    font-weight: bold;
+}
+
+.pagination li a{
+    color:#FDB784!important;
+}
+
+.pagination .active {
+    background-color: #FDB784 !important;
+    color:white !important;
+}
+
+.disabledlink{
+    pointer-events: none;
+}
+
+.pagination{
+    margin-top: -2%;
+}
+
+.row.cards i{
+    color:black;
+}
+
+.price::after{
+    content: "tg.";
+}
+
+.page-footer{
+    background-color: #284B63 !important ;
+    box-shadow: 0px 0.1px 5px 2px #284B63;
+}
+
+.page-footer li{
+    padding-top: 2% !important;
+}
+
+
+.grey-text.text-lighten-3:hover {
+    color: #FDB784 !important;
+}
+
+.register{
+    margin-top: 4% !important;
+    width:30% !important;
+    height:500px !important;
+    box-shadow: 0px 0.1px 5px 2px #284B63;
+    background-color: white !important;
+}
+.reg{
+    margin: 3% !important ;
+}
+.register h5{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bolder !important;
+    font-size: 1.6rem;
+    padding-top: 2%;
+    letter-spacing: 0.03em;
+    color: #284B63;
+}
+
+.register.input-field .prefix.active {
+    color: #284B63 !important;
+}
+
+.register.input-field input[type=text]:focus{
+    border-bottom: #284B63 !important;
+    box-shadow: #284B63 !important;
+}
+
+
+.regbtn{
+    background-color: #284B63 !important;
+    font-size: 1.1rem !important;
+    width:65%;
+    font-weight: 400 !important;
+}
+
+.register p{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #284B63;
+}
+
+.update input.active{
+    color: #284B63 !important;
+}
+
+.update .btn{
+    background-color: #284B63 !important;
+}
+
+
+
+@media only screen and (max-width: 992px){
+    .register{
+        width:80% !important;
+    }
+
+}

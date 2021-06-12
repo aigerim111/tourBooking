@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Kazakhi Tour</title>
+    <link rel="stylesheet" href="/style/index.css">
+    <link rel="shortcut icon" href="/images/icon.png">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="/style/materialize/css/materialize.min.css" media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"/>
+
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous"/>
+
+</head>
+<body>
+
+
+<div id="home">
+    <div class="navigation">
+        <div class="navv">
+        <nav class="navigator">
+            <div class="nav-wrapper">
+                <a href="#home" class="brand-logo"><img src="/images/icon.png" alt=""><span class="logo">  Kazakhi Tour</span></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="hide-on-med-and-down words">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#tours">Tours</a></li>
+                    <li><a href="#contacts">Contacts</a></li>
+                </ul>
+                <ul id="nav-mobile" class="hide-on-med-and-down navbtns">
+                    <li th:if="${usr==null}"><a class="waves-effect waves-light btn-small btnnav modal-trigger" href="/registration">Sign Up</a></li>
+                    <li th:if="${usr==null}"><a class="waves-effect waves-light btn-small btnnava modal-trigger" href="/login">Login</a></li>
+                    <li th:if="${usr!=null}"><a class='dropdown-trigger' data-target='dropdown1' th:text="${usr.getUsername()}"></a></li>
+                    <ul id='dropdown1' class='dropdown-content' th:if="${usr!=null}">
+                        <li><a th:href="${usr.getUsername().equals('admin')}?@{/newTour}:@{'/user/'+${usr.getUsername()}}">Settings</a></li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li><form action="/logout" method="post">
+                            <button class="btn"  style="background: #284B63;" type="submit">Logout</button>
+                        </form></li>
+                    </ul>
+                </ul>
+            </div>
+        </nav>
+        </div>
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#tours">Tours</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+                <li th:if="${usr==null}"><a class="waves-effect waves-light btn-small btnnav modal-trigger" href="/registration">Sign Up</a></li>
+                <li th:if="${usr==null}"><a class="waves-effect waves-light btn-small btnnava modal-trigger" href="/login">Login</a></li>
+                <li th:if="${usr!=null}"><a th:href="${usr.getUsername().equals('admin')}?@{/newTour}:@{'/user/'+${usr.getUsername()}}">Settings</a></li>
+                <li th:if="${usr!=null}"><form action="/logout" method="post">
+                    <button class="btn"  style="background: #284B63;" type="submit">Logout</button>
+                </form></li>
+            </ul>
+        <section class="slider" style="height:70%;">
+            <ul class="slides" style="height:70%">
+                <li class="" style="opacity: 0; transform: translateX(0px) translateY(0px); ">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="background-image: url('https://images.unsplash.com/photo-1571194491326-7d612e7f6c16?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1212&q=80&');">
+                    <div class="caption center-align" style="opacity: 0; transform: translateX(100px);">
+                        <div class="texts">
+                            <h1 class="headingtext">Discover Kazakhstan with us!</h1>
+                            <h5 class="secondtext">Travel, be surprised, be inspired</h5>
+                            <a class="waves-effect waves-light btn-large textsbtn" href="/tours">Find a tour</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="active" style="opacity: 1; transform: translateX(0px) translateY(0px);">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" style="background-image: url('/images/main.jpg');">
+                    <div class="caption center-align" style="opacity: 1; transform: translateX(0px) translateY(0px);">
+                        <div class="texts">
+                            <h1 class="headingtext">Discover Kazakhstan with us!</h1>
+                            <h5 class="secondtext">Travel, be surprised, be inspired</h5>
+                            <a class="waves-effect waves-light btn-large textsbtn" href="/tours">Find a tour</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
+    <div id="about">
+        <center><h1 class="heading2">We want everyone to see the beauty of our country</h1></center>
+        <div class="texts1">
+        <div class="row">
+            <div class="col s12 l6"><span class="abouttext">Donec ut neque quis metus mollis sodales. Nullam accumsan commodo lectus, eget egestas ipsum dignissim sed. Cras elit lectus, mollis quis maximus at, dapibus pharetra ex. Vestibulum  massa eu sem dapibus malesuada. Curabitur tincidunt, massa eu eleifend vestibulum, tortor massa placerat velit eu sem dapibus malesuada. Curabitur tincidunt, massa eu eleifend vestibulum, tort.</span></div>
+            <div class="col s12 l6">
+                <div class="row">
+                <div class="col l6">
+                    <center>
+                        <img src="/images/Cheers.png" alt="">
+                        <img src="/images/Cheers%20(1).png" alt="">
+                    </center>
+                </div>
+                <div class="col l6">
+                    <center>
+                        <img src="/images/Cheers%20(2).png" alt="">
+                        <img src="/images/Cheers%20(3).png" alt="">
+                    </center>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <center><span class="abouttext">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam semper, nisl vel mollis sodales, bi iaculis venenatis nisi at iaculis. Etiam vel massa aliquet, au volutpat libero.</span></center>
+    </div>
+
+    <div id="gallery" th:if="${relevance!=null}">
+        <h1 class="heading3">Popular Places</h1>
+        <div class="row">
+            <div class="col s12 m4 l4" th:each="popTours: ${relevance}">
+                <div class="card hoverable">
+                    <a th:href="@{'/tourpage/'+${popTours.tourid}}">
+                    <div class="card-image">
+                        <img th:src="${popTours.image}" style="width: 100% !important;height: 22rem !important;">
+                        <span class="card-title" th:text="${popTours.tourname}"></span>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="tours">
+    <h1 class="heading4">Available Tours</h1>
+    <h5 class="h4">We have chosen the most comfortable routes and the safest walking routes. And we left you to choose the most interesting place where you would see the amazing side of our country.</h5>
+    <div class="row">
+        <div class="col s12 m4 l4" th:each="i : ${#numbers.sequence(0, 2)}" th:if="${tours.get(i).getTourDetails()}">
+            <div class="card">
+                <a th:href="@{'/tourpage/'+${tours.get(i).getTourid()}}">
+                    <div class="card-image" >
+                        <img th:src="${tours.get(i).getImage()}" style="width: 100% !important; height: 22rem !important;">
+                    </div>
+                    <div class="card-content">
+                        <p><i class="fas fa-map-marker-alt"></i><span th:text="${tours.get(i).getTourname()}"></span></p>
+                        <p><i class="fas fa-clock"></i> <span th:text="${tours.get(i).getTourduration()}"></span></p>
+                        <p><span th:text="${tours.get(i).getPrice()}"></span> tg.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="contacts">
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text" style="font-family: Roboto; font-style: normal; font-weight: normal;">KAZAKHI TOUR</h5>
+                    <p class="grey-text text-lighten-4" style="font-family: Roboto; font-style: italic; font-weight: 300;">Write to discover this great country!</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text" style="font-family: Roboto; font-style: normal; font-weight: normal;">Contacts</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3 cl" href="#!"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a class="grey-text text-lighten-3 cl" href="#!"><i class="fab fa-vk"></i> VK</a></li>
+                        <li><a class="grey-text text-lighten-3 cl" href="#!"><i class="fab fa-telegram"></i> Telegram</a></li>
+                        <li><a class="grey-text text-lighten-3 cl" href="#!"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2021 Copyright Text
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script type="text/javascript" src="/style/materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+</body>
+</html>

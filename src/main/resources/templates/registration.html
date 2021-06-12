@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+    <link rel="stylesheet" type=text/css href="style/tours.css"/>
+    <link rel="shortcut icon"  href="/images/icon.png"/>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/style/materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+</head>
+<body style="background: linear-gradient(159.78deg, rgba(47, 89, 118, 0.82) 13.46%, #082A41 45.52%) !important;">
+
+<center>
+<div class="register">
+
+    <form th:action="@{/registration}" method="POST" class="reg" th:object="${usr}">
+        <div class="container">
+            <br>
+            <h5 >Welcome to our website!</h5>
+            <p>Let's sign up :</p>
+
+            <div class="input-field">
+                <i class="material-icons prefix">account_circle</i>
+                <input placeholder="Your username" type="text" name="username" th:field="*{username}" required>
+                <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Length must be no less than 2 or no more than 16!</div>
+                <div th:if="${check}">
+                    Username/email is already taken!
+                </div>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">email</i>
+                <input placeholder="Your email" type="email" name="email" required class="validate" th:field="*{email}">
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input placeholder="Enter password" type="password" name="password" required class="validate" th:field="*{password}">
+            </div>
+            <div th:if="${passwordlength}">
+                Password must be at least 8 characters!
+            </div>
+            <p class="center">Already have an account? <a href="/login">login</a></p>
+            <div class="center"><input type="submit" name="submit" class="center btn regbtn" value="Register" ></div>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+</div>
+</center>
+</body>
+</html>

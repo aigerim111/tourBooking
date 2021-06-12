@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/style/index.css">
+    <link rel="shortcut icon"  href="/images/icon.png">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="/style/materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+</head>
+<body style=" background: linear-gradient(180deg, rgba(47, 89, 118, 0.82) 13.46%, #082A41 45.52%) !important; background-repeat: repeat">
+<center>
+    <div class="login">
+        <form th:action="@{/login}" method="POST" class="log">
+                <div class="container">
+                    <br>
+                    <br>
+                    <h5>Welcome back!</h5>
+                    <p>Fill this form to log on:</p>
+                    <label for="username">
+                        <div class="input-field">
+                            <i class="material-icons prefix">person</i>
+                            <input placeholder="Your username" type="text" name="username" id="username" required class="form-control">
+                        </div>
+                    </label>
+                    <label for="password">
+                        <div class="input-field">
+                            <i class="material-icons prefix">lock</i>
+                            <input placeholder="Enter password" id="password" type="password" name="password" required class="form-control">
+                        </div>
+                    </label>
+                    <a href="/forgotPassword" style="color: #FDB784 !important;">Forgot password?</a>
+                    <div class="card-panel red darken-4" th:if="${param.error}"><span class="white-text">Invalid username and password.</span></div>
+                    <p>Are you new? <a href="/registration" >Register</a></p>
+                    <div class="center"><input type="submit" value="login" class="btn pulse logbtn"></div>
+            </div>
+        </form>
+    </div>
+</center>
+</body>
+</html>

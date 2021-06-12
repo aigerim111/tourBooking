@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Kazakhi Tour</title>
+    <link rel="stylesheet" href="/style/materialize/css/materialize.min.css" media="screen,projection"/>
+</head>
+<body>
+<center>
+    <div th:if="${numpeoplemax}" class="red-text heading2">We are sorry but the number of people has already reached the maximum.
+        Thank you for understanding.</div>
+    <div th:if="${userdeterror}" class="heading2 red-text">Fill out information about yourself
+    </div>
+    <div th:if="${successfullyadded}" class="green-text heading2">You have booked a tour!</div>
+    <div th:if="${dateissue}" class="red-text heading2">You already booked the tour on that date!</div>
+    <div th:if="${auth}" class="red-text heading2">You must be authenticated first!</div>
+    <a th:href="@{'/user/'+${usr.getUsername()}}" class="heading2">Personal page</a>
+</center>
+</body>
+</html>
